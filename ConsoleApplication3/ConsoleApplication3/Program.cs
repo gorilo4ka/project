@@ -10,6 +10,98 @@ namespace ConsoleApplication3
     class Program
     {
 
+        /*enum Symbols
+        {
+            X,
+            O
+        }*/
+
+        static bool Check_WinX(string[,] square)
+        {
+            if (square[2, 2] == "X")
+            {
+                if (square[2, 0] == "X" && square[2, 4] == "X")
+                    return true;
+
+                else if (square[0, 2] == "X" && square[4, 2] == "X")
+                    return true;
+
+                else if (square[0, 0] == "X" && square[4, 4] == "X")
+                    return true;
+
+                else if (square[0, 4] == "X" && square[4, 0] == "X")
+                    return true;
+            }
+
+            //боковые 
+            else if (square[0, 2] == "X" && square[0, 0] == "X" && square[0, 4] == "X")
+            {
+                return true;
+            }
+
+            else if (square[2, 0] == "X" && square[0, 0] == "X" && square[4, 0] == "X")
+            {
+                return true;
+            }
+
+            else if (square[4, 2] == "X" && square[4, 0] == "X" && square[4, 4] == "X")
+            {
+                return true;
+            }
+
+            else if (square[2, 4] == "X" && square[0, 4] == "X" && square[4, 4] == "X")
+            {
+                return true;
+            }
+            
+            
+            return false;
+              
+        }
+
+
+        static bool Check_WinO(string[,] square)
+        {
+            if (square[2, 2] == "O")
+            {
+                if (square[2, 0] == "O" && square[2, 4] == "O")
+                    return true;
+
+                else if (square[0, 2] == "O" && square[4, 2] == "O")
+                    return true;
+
+                else if (square[0, 0] == "O" && square[4, 4] == "O")
+                    return true;
+
+                else if (square[0, 4] == "O" && square[4, 0] == "O")
+                    return true;
+            }
+
+            //боковые 
+            else if (square[0, 2] == "O" && square[0, 0] == "O" && square[0, 4] == "O")
+            {
+                return true;
+            }
+
+            else if (square[2, 0] == "O" && square[0, 0] == "O" && square[4, 0] == "O")
+            {
+                return true;
+            }
+
+            else if (square[4, 2] == "O" && square[4, 0] == "O" && square[4, 4] == "O")
+            {
+                return true;
+            }
+
+            else if (square[2, 4] == "O" && square[0, 4] == "O" && square[4, 4] == "O")
+            {
+                return true;
+            }
+            
+            return false;
+        }
+
+
         static bool Check_X(int x)
         {
             if (x == 1 || x == 2 || x == 3)
@@ -39,6 +131,7 @@ namespace ConsoleApplication3
 
         static void prnt(string[,] square )
         {
+            Console.WriteLine();
             for (int i = 0; i < 6; i++)
             {
                 for (int j = 0; j < 6; j++)
@@ -143,15 +236,19 @@ namespace ConsoleApplication3
             square[2, 5] = " 2";
             square[4, 5] = " 3";
 
-            
-           Input(square);
-            Turn_Bot(square);
-            Input(square);
-            Turn_Bot(square);
-            Input(square);
-            Turn_Bot(square);
-            Input(square);
-            Turn_Bot(square);
+            do
+            {
+                if(Check_WinO(square))
+                {
+                    break;
+                }
+                Input(square);
+                Turn_Bot(square);
+            }
+            while (!Check_WinX(square));
+
+            Console.WriteLine("Тебе удалось это аутист");
+
 
 
             Console.ReadKey();
