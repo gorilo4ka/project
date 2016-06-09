@@ -19,6 +19,24 @@ namespace ConsoleApplication3
             return false;
         }
 
+        static bool Check_PlaceX(string[,] square,int x, int y)
+        {
+            if (square[x,y]=="O")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        static bool Check_PlaceY(string[,] square, int x, int y)
+        {
+            if (square[x, y] == "X")
+            {
+                return true;
+            }
+            return false;
+        }
+
         static void prnt(string[,] square )
         {
             for (int i = 0; i < 6; i++)
@@ -33,6 +51,8 @@ namespace ConsoleApplication3
 
         static void Input(string[,] square)
         {
+        link1:
+
             Console.WriteLine("Введите координаты X(от 1 до 3)");
             int Coord_X = -1;
             bool isNumber = Int32.TryParse(Console.ReadLine(), out Coord_X);
@@ -54,11 +74,38 @@ namespace ConsoleApplication3
             }
             Coord_X = Coord_X * 2 - 2;
             Coord_Y = Coord_Y * 2 - 2;
-            square[Coord_X, Coord_Y] = "X";
-            prnt(square);
-        }          
 
-        
+           if(Check_PlaceX(square, Coord_X, Coord_Y)|| Check_PlaceY(square, Coord_X, Coord_Y))
+            {
+                Console.WriteLine("В данном месте находится символ противника");
+                goto link1;
+            }
+
+                square[Coord_X, Coord_Y] = "X";
+                prnt(square);
+            
+        }
+
+        static void Turn_Bot(string[,] square)
+        {
+            
+        Link1:
+            Random rnd = new Random();
+            int Coord_X = rnd.Next(1,4);
+                int Coord_Y = rnd.Next(1,4);
+           // Console.WriteLine(Coord_X + " " + Coord_Y);
+            Coord_X = Coord_X * 2 - 2;
+            Coord_Y = Coord_Y * 2 - 2;
+
+            if (Check_PlaceY(square, Coord_X, Coord_Y)||Check_PlaceX(square, Coord_X, Coord_Y))
+            {                
+                goto Link1;
+            }
+
+            square[Coord_X, Coord_Y] = "O";
+            prnt(square);
+        }
+
         static void Main(string[] args)
         {
             string[,] square = new string[6, 6];
@@ -96,13 +143,17 @@ namespace ConsoleApplication3
             square[2, 5] = " 2";
             square[4, 5] = " 3";
 
-            Input(square);
-            Input(square);
-            Input(square);
-            Input(square);
-            Input(square);
-
             
+           Input(square);
+            Turn_Bot(square);
+            Input(square);
+            Turn_Bot(square);
+            Input(square);
+            Turn_Bot(square);
+            Input(square);
+            Turn_Bot(square);
+
+
             Console.ReadKey();
         }
        
