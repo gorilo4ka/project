@@ -3,18 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//45644
 
 namespace ConsoleApplication3
 {
     class Program
     {
-
-        /*enum Symbols
-        {
-            X,
-            O
-        }*/
 
         static bool Check_WinX(string[,] square)
         {
@@ -102,12 +95,16 @@ namespace ConsoleApplication3
         }
 
 
-        static bool Check_X(int x)
+        static bool Check_X(string [,] square,int x)
         {
-            if (x == 1 || x == 2 || x == 3)
+            for (int i = 1; i <= square.GetLength(0) / 2; i++)
             {
-                return true;
+                if (x == i)
+                {
+                    return true;
+                }
             }
+
             return false;
         }
 
@@ -129,12 +126,74 @@ namespace ConsoleApplication3
             return false;
         }
 
-        static void prnt(string[,] square )
+
+
+        static void Input(string[,] square)
+        {
+            int Coord_X = -1; int Coord_Y = -1;
+            
+            while (true)
+            {
+
+                Console.WriteLine("Введите координаты X(от 1 до "+square.GetLength(0)/2+")");
+                bool isNumber = Int32.TryParse(Console.ReadLine(), out Coord_X);
+                while (!isNumber || !Check_X(square,Coord_X))
+                {
+                    Console.WriteLine("Error");
+                    Console.WriteLine("Введите координаты X(от 1 до "+square.GetLength(0)/2 + ")");
+                    isNumber = Int32.TryParse(Console.ReadLine(), out Coord_X);
+                }
+
+                Console.WriteLine("Введите координаты Y(от 1 до " + square.GetLength(0) / 2 + ")");
+                isNumber = Int32.TryParse(Console.ReadLine(), out Coord_Y);
+                while (!isNumber || !Check_X(square,Coord_Y))
+                {
+                    Console.WriteLine("Error");
+                    Console.WriteLine("Введите координаты Y(от 1 до " + square.GetLength(0) / 2 + ")");
+                    isNumber = Int32.TryParse(Console.ReadLine(), out Coord_Y);
+                }
+                Coord_X = Coord_X * 2 - 2;
+                Coord_Y = Coord_Y * 2 - 2;
+
+                if (Check_PlaceX(square, Coord_X, Coord_Y) || Check_PlaceY(square, Coord_X, Coord_Y))
+                {
+                    Console.WriteLine("В данном месте находится символ противника");
+
+                }
+                else
+                    break;
+            }
+
+            square[Coord_X, Coord_Y] = "X";
+            prnt(square);
+
+        }
+
+        static void Turn_Bot(string[,] square)
+        {
+            int Coord_X = -1; int Coord_Y = -1;
+            while (true)
+            {
+                Random rnd = new Random();
+                 Coord_X = rnd.Next(1, square.GetLength(0)/2+1);
+                 Coord_Y = rnd.Next(1, square.GetLength(0)/2+1);
+                Coord_X = Coord_X * 2 - 2;
+                Coord_Y = Coord_Y * 2 - 2;
+                if (!(Check_PlaceY(square, Coord_X, Coord_Y) || Check_PlaceX(square, Coord_X, Coord_Y)))
+                {
+                    break;
+                }
+            }
+            square[Coord_X, Coord_Y] = "O";
+            prnt(square);
+        }
+
+        static void prnt(string[,] square)
         {
             Console.WriteLine();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < square.GetLength(0); i++)
             {
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < square.GetLength(0); j++)
                 {
                     Console.Write(square[i, j]);
                 }
@@ -142,115 +201,64 @@ namespace ConsoleApplication3
             }
         }
 
-        static void Input(string[,] square)
-        {
-        link1:
-
-            Console.WriteLine("Введите координаты X(от 1 до 3)");
-            int Coord_X = -1;
-            bool isNumber = Int32.TryParse(Console.ReadLine(), out Coord_X);
-            while (!isNumber || !Check_X(Coord_X))
-            {
-                Console.WriteLine("Error");
-                Console.WriteLine("Введите координаты X(от 1 до 3)");
-                isNumber = Int32.TryParse(Console.ReadLine(), out Coord_X);
-            }
-
-            Console.WriteLine("Введите координаты Y(от 1 до 3)");
-            int Coord_Y = -1;
-            isNumber = Int32.TryParse(Console.ReadLine(), out Coord_Y);
-            while (!isNumber || !Check_X(Coord_Y))
-            {
-                Console.WriteLine("Error");
-                Console.WriteLine("Введите координаты Y(от 1 до 3)");
-                isNumber = Int32.TryParse(Console.ReadLine(), out Coord_Y);
-            }
-            Coord_X = Coord_X * 2 - 2;
-            Coord_Y = Coord_Y * 2 - 2;
-
-           if(Check_PlaceX(square, Coord_X, Coord_Y)|| Check_PlaceY(square, Coord_X, Coord_Y))
-            {
-                Console.WriteLine("В данном месте находится символ противника");
-                goto link1;
-            }
-
-                square[Coord_X, Coord_Y] = "X";
-                prnt(square);
-            
-        }
-
-        static void Turn_Bot(string[,] square)
-        {
-            
-        Link1:
-            Random rnd = new Random();
-            int Coord_X = rnd.Next(1,4);
-                int Coord_Y = rnd.Next(1,4);
-           // Console.WriteLine(Coord_X + " " + Coord_Y);
-            Coord_X = Coord_X * 2 - 2;
-            Coord_Y = Coord_Y * 2 - 2;
-
-            if (Check_PlaceY(square, Coord_X, Coord_Y)||Check_PlaceX(square, Coord_X, Coord_Y))
-            {                
-                goto Link1;
-            }
-
-            square[Coord_X, Coord_Y] = "O";
-            prnt(square);
-        }
-
         static void Main(string[] args)
         {
-            string[,] square = new string[6, 6];
-            for (int i = 0; i < 5; i++)
+            int LengX = 0;
+            Console.WriteLine("Введите размер поля");
+            bool isNumber = Int32.TryParse(Console.ReadLine(), out LengX);
+            while (!isNumber || LengX<3)
+            {
+                Console.WriteLine("Error");
+                Console.WriteLine("Введите размер поля");
+                isNumber = Int32.TryParse(Console.ReadLine(), out LengX);
+            }
+            LengX = LengX * 2+1;
+            string[,] square = new string[LengX, LengX];
+            for (int i = 0; i < LengX-2; i++)
                 {
-                    for (int j = 1; j < 5; j = j + 2)
+                    for (int j = 1; j < LengX-1; j = j + 2)
                     {
                         square[i, j] = "|";
                     }
                 }
-                for (int i = 1; i < 5; i = i + 2)
+                for (int i = 1; i < LengX-2; i = i + 2)
                 {
-                    for (int j = 0; j < 5; j = j + 2)
+                    for (int j = 0; j < LengX-2; j = j + 2)
                     {
                         square[i, j] = "-";
                     }
                 }
 
 
-           
 
-            square[0, 0] = " ";
-            square[0, 2] = " ";
-            square[0, 4] = " ";
-            square[2, 0] = " ";
-            square[2, 2] = " ";
-            square[2, 4] = " ";
-            square[4, 0] = " ";
-            square[4, 2] = " ";
-            square[4, 4] = " ";
-            square[5, 0] = "1";
-            square[5, 2] = " 2";
-            square[5, 4] = " 3";
-            square[0, 5] = " 1";
-            square[2, 5] = " 2";
-            square[4, 5] = " 3";
-
+            for (int i = 0; i < LengX-2; i=i+2)
+            {
+                for (int j = 0; j < LengX-2; j=j+2)
+                {
+                    square[i,j] = " ";
+                }
+                int z = 1 + i / 2;
+                String number = Convert.ToString(z);
+                square[LengX - 1, i] =  number+" ";
+                square[i, LengX - 1] = " " + number;
+            }
+            
+            int text=5;
             do
             {
                 if(Check_WinO(square))
                 {
+                    text = 1;
                     break;
                 }
                 Input(square);
                 Turn_Bot(square);
             }
             while (!Check_WinX(square));
-
+            if(text==1)            
+                Console.WriteLine("Ты кот");
+            else            
             Console.WriteLine("Тебе удалось это аутист");
-
-
-
             Console.ReadKey();
         }
        
