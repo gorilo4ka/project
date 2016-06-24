@@ -11,45 +11,69 @@ namespace ConsoleApplication3
 
         static bool Check_WinX(string[,] square)
         {
-            if (square[2, 2] == "X")
+            //Vertikal`
+
+            for (int i = 0; i < square.GetLength(0); i=i+2)
             {
-                if (square[2, 0] == "X" && square[2, 4] == "X")
-                    return true;
-
-                else if (square[0, 2] == "X" && square[4, 2] == "X")
-                    return true;
-
-                else if (square[0, 0] == "X" && square[4, 4] == "X")
-                    return true;
-
-                else if (square[0, 4] == "X" && square[4, 0] == "X")
-                    return true;
+                int SumX = 0;
+                for (int j = 0; j < square.GetLength(0); j=j+2)
+                {
+                    if (square[j, i] == "X")
+                    {
+                        SumX++;
+                        if (SumX == 3)
+                        {
+                            return true;
+                        }
+                    }  
+                    else                  
+                  SumX = 0;                   
+                }        
+            }
+            //Gorizontal`
+            for (int i = 0; i < square.GetLength(0); i = i + 2)
+            {
+                int SumX = 0;
+                for (int j = 0; j < square.GetLength(0); j = j + 2)
+                {
+                    if (square[i, j] == "X")
+                    {
+                        SumX++;
+                        if (SumX == 3)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                        SumX = 0;
+                }
+            }
+            //Diagonal`(1)
+            for (int i = 4; i < square.GetLength(0)-2; i = i + 2)
+            {
+                int SumX = 0;
+                for (int j = 0; j < i+1; j = j + 2)
+                {
+                    if (square[i - j, j] == "X")
+                    {
+                        SumX++;
+                        if (SumX == 3)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                        SumX = 0;                    
+                }
+               
             }
 
-            //боковые 
-            else if (square[0, 2] == "X" && square[0, 0] == "X" && square[0, 4] == "X")
-            {
-                return true;
-            }
 
-            else if (square[2, 0] == "X" && square[0, 0] == "X" && square[4, 0] == "X")
-            {
-                return true;
-            }
 
-            else if (square[4, 2] == "X" && square[4, 0] == "X" && square[4, 4] == "X")
-            {
-                return true;
-            }
 
-            else if (square[2, 4] == "X" && square[0, 4] == "X" && square[4, 4] == "X")
-            {
-                return true;
-            }
-            
-            
-            return false;
-              
+
+
+            return false;              
         }
 
 
