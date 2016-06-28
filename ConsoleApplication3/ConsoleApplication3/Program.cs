@@ -8,6 +8,15 @@ namespace ConsoleApplication3
 {
     class Program
     {
+        enum elements 
+        {
+            empty,
+            X,
+            O,
+            Vert,
+            Horiz
+            
+        }
 
         static bool Check_WinX(string[,] square)
         {
@@ -189,7 +198,7 @@ namespace ConsoleApplication3
             }
 
             square[Coord_X, Coord_Y] = "X";
-            prnt(square);
+            //prnt(square);
 
         }
 
@@ -209,16 +218,63 @@ namespace ConsoleApplication3
                 }
             }
             square[Coord_X, Coord_Y] = "O";
-            prnt(square);
+           // prnt(square);
         }
-
-        static void prnt(string[,] square)
+        
+        static void prnt(elements[,] square)
         {
-            Console.WriteLine();
+            for (int i = 0; i < square.GetLength(0) - 2; i++)
+            {
+                for (int j = 1; j < square.GetLength(0) - 1; j = j + 2)
+                {
+                    square[i, j] = elements.Vert;
+                }
+            }
+            for (int i = 1; i < square.GetLength(0) - 2; i = i + 2)
+            {
+                for (int j = 0; j < square.GetLength(0) - 2; j = j + 2)
+                {
+                    square[i, j] = elements.Horiz;
+                }
+            }
+            for (int i = 0; i < square.GetLength(0)-1; i=i+2)
+            {
+                if(i==0)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write(i / 2+1+" ");
+            }
+
+                Console.WriteLine();
             for (int i = 0; i < square.GetLength(0); i++)
             {
+                   if (i == square.GetLength(0) - 1)
+                {
+                    break;
+                }
+                else if(i % 2 == 0)
+                {
+                    Console.Write(i / 2 + 1);
+                }
+              
+                else
+                    Console.Write(" ");
                 for (int j = 0; j < square.GetLength(0); j++)
                 {
+                   if(square[i, j]==elements.empty)
+                    {
+                        Console.Write(" ");
+                    }
+                    else if (square[i, j] == elements.Horiz)
+                    {
+                        Console.Write("-");
+                    }
+                    else if (square[i, j] == elements.Vert)
+                    {
+                        Console.Write("|");
+                    }
+                    else
                     Console.Write(square[i, j]);
                 }
                 Console.WriteLine();
@@ -237,37 +293,10 @@ namespace ConsoleApplication3
                 isNumber = Int32.TryParse(Console.ReadLine(), out LengX);
             }
             LengX = LengX * 2+1;
-            string[,] square = new string[LengX, LengX];
-            for (int i = 0; i < LengX-2; i++)
-                {
-                    for (int j = 1; j < LengX-1; j = j + 2)
-                    {
-                        square[i, j] = "|";
-                    }
-                }
-                for (int i = 1; i < LengX-2; i = i + 2)
-                {
-                    for (int j = 0; j < LengX-2; j = j + 2)
-                    {
-                        square[i, j] = "-";
-                    }
-                }
-
-
-
-            for (int i = 0; i < LengX-2; i=i+2)
-            {
-                for (int j = 0; j < LengX-2; j=j+2)
-                {
-                    square[i,j] = " ";
-                }
-                int z = 1 + i / 2;
-                String number = Convert.ToString(z);
-                square[LengX - 1, i] =  number+" ";
-                square[i, LengX - 1] = " " + number;
-            }
+            elements[,] square = new elements[LengX, LengX];
+            prnt(square);
             
-            int text=5;
+           /* int text=5;
             do
             {
                 if(Check_WinO(square))
@@ -282,9 +311,40 @@ namespace ConsoleApplication3
             if(text==1)            
                 Console.WriteLine("Ты кот");
             else            
-            Console.WriteLine("Тебе удалось это аутист");
+            Console.WriteLine("Тебе удалось это аутист");*/
             Console.ReadKey();
         }
        
     }
 }
+
+
+/*          for (int i = 0; i < LengX-2; i++)
+                {
+                    for (int j = 1; j < LengX-1; j = j + 2)
+                    {
+                        square[i, j] = elements.Vert;
+                    }
+                }
+                for (int i = 1; i < LengX-2; i = i + 2)
+                {
+                    for (int j = 0; j < LengX-2; j = j + 2)
+                    {
+                        square[i, j] = elements.Horiz;
+                    }
+                }
+
+
+
+            for (int i = 0; i < LengX-2; i=i+2)
+            {
+                for (int j = 0; j < LengX-2; j=j+2)
+                {
+                    square[i,j] = elements.empty;
+                }
+                int z = 1 + i / 2;
+                String number = Convert.ToString(z);
+                square[LengX - 1, i] =  number+" ";
+                square[i, LengX - 1] = " " + number;
+            }
+*/
