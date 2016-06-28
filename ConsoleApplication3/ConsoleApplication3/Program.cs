@@ -222,11 +222,11 @@ namespace ConsoleApplication3
         {
             for (int i = 0; i < square.GetLength(0); i++)
             {
-              if(i==0)
+              /*if(i==0)
                 {
                     Console.Write(" ");
-                }
-                Console.Write(i +1+" ");
+                }*/
+                Console.Write(" "+ (i +1)/*+" "*/);
             }
                 Console.WriteLine();
             for (int i = 0; i < square.GetLength(0); i++)
