@@ -12,10 +12,7 @@ namespace ConsoleApplication3
         {
             empty,
             X,
-            O,
-            Vert,
-            Horiz
-            
+            O           
         }
 
         static bool Check_WinX(string[,] square)
@@ -223,60 +220,35 @@ namespace ConsoleApplication3
         
         static void prnt(elements[,] square)
         {
-            for (int i = 0; i < square.GetLength(0) - 2; i++)
-            {
-                for (int j = 1; j < square.GetLength(0) - 1; j = j + 2)
-                {
-                    square[i, j] = elements.Vert;
-                }
-            }
-            for (int i = 1; i < square.GetLength(0) - 2; i = i + 2)
-            {
-                for (int j = 0; j < square.GetLength(0) - 2; j = j + 2)
-                {
-                    square[i, j] = elements.Horiz;
-                }
-            }
-            for (int i = 0; i < square.GetLength(0)-1; i=i+2)
-            {
-                if(i==0)
-                {
-                    Console.Write(" ");
-                }
-                Console.Write(i / 2+1+" ");
-            }
-
-                Console.WriteLine();
             for (int i = 0; i < square.GetLength(0); i++)
             {
-                   if (i == square.GetLength(0) - 1)
+              if(i==0)
                 {
-                    break;
-                }
-                else if(i % 2 == 0)
-                {
-                    Console.Write(i / 2 + 1);
-                }
-              
-                else
                     Console.Write(" ");
+                }
+                Console.Write(i +1+" ");
+            }
+                Console.WriteLine();
+            for (int i = 0; i < square.GetLength(0); i++)
+            {               
+                    Console.Write(i  + 1);
+
                 for (int j = 0; j < square.GetLength(0); j++)
                 {
                    if(square[i, j]==elements.empty)
                     {
                         Console.Write(" ");
-                    }
-                    else if (square[i, j] == elements.Horiz)
-                    {
-                        Console.Write("-");
-                    }
-                    else if (square[i, j] == elements.Vert)
-                    {
-                        Console.Write("|");
-                    }
+                    }                                     
                     else
                     Console.Write(square[i, j]);
+                    Console.Write("|");
                 }
+                Console.WriteLine();
+                for (int k = 0; k < square.GetLength(0)*2+1; k++)
+                {
+                    Console.Write("-");
+                }
+                
                 Console.WriteLine();
             }
         }
@@ -292,7 +264,7 @@ namespace ConsoleApplication3
                 Console.WriteLine("Введите размер поля");
                 isNumber = Int32.TryParse(Console.ReadLine(), out LengX);
             }
-            LengX = LengX * 2+1;
+            //LengX = LengX * 2+1;
             elements[,] square = new elements[LengX, LengX];
             prnt(square);
             
