@@ -12,22 +12,23 @@ namespace ConsoleApplication3
         {
             empty,
             X,
-            O           
+            O,
+            t           
         }
 
-        static bool Check_WinX(string[,] square)
+        static bool Check_WinX(elements[,] square,int quant)
         {
             //Vertikal`
 
-            for (int i = 0; i < square.GetLength(0); i=i+2)
+            for (int i = 0; i < square.GetLength(0); i++)
             {
                 int SumX = 0;
-                for (int j = 0; j < square.GetLength(0); j=j+2)
+                for (int j = 0; j < square.GetLength(0); j++)
                 {
-                    if (square[j, i] == "X")
+                    if (square[j, i] == elements.X)
                     {
                         SumX++;
-                        if (SumX == 3)
+                        if (SumX == quant)
                         {
                             return true;
                         }
@@ -37,15 +38,15 @@ namespace ConsoleApplication3
                 }        
             }
             //Gorizontal`
-            for (int i = 0; i < square.GetLength(0); i = i + 2)
+            for (int i = 0; i < square.GetLength(0); i++)
             {
                 int SumX = 0;
-                for (int j = 0; j < square.GetLength(0); j = j + 2)
+                for (int j = 0; j < square.GetLength(0); j++)
                 {
-                    if (square[i, j] == "X")
+                    if (square[i, j] == elements.X)
                     {
                         SumX++;
-                        if (SumX == 3)
+                        if (SumX == quant)
                         {
                             return true;
                         }
@@ -55,79 +56,100 @@ namespace ConsoleApplication3
                 }
             }
             //Diagonal`(1)
-            for (int i = 4; i < square.GetLength(0)-2; i = i + 2)
+            for (int i = quant-1; i < square.GetLength(0); i++)
             {
                 int SumX = 0;
-                for (int j = 0; j < i+1; j = j + 2)
+                for (int j = 0; j < i+1; j = j + 1)
                 {
-                    if (square[i - j, j] == "X")
-                    {
-                        SumX++;
-                        if (SumX == 3)
+                   // square[(square.GetLength(0) - 1 )- j, i - j] = elements.t;
+                    //square[ i - j, (square.GetLength(0) - 1) - j] = elements.t;
+                    //square[i - j, j] = elements.t;
+                    //square[(square.GetLength(0) - 1) - j, ((square.GetLength(0)-1)-i)+j] = elements.t;
+                    if (square[i - j, j] == elements.X)
+                    {                        
+                           SumX++;
+                        if (SumX == quant)
                         {
                             return true;
                         }
                     }
                     else
-                        SumX = 0;                    
-                }
-               
+                        SumX = 0;                                    
+                }               
             }
 
+            //Diagonal`(2)
+            for (int i = quant - 1; i < square.GetLength(0); i++)
+            {
+                int SumX = 0;
+                for (int j = 0; j < i + 1; j = j + 1)
+                {
+                    if (square[(square.GetLength(0) - 1) - j, i - j] == elements.X)
+                    {
+                        SumX++;
+                        if (SumX == quant)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                        SumX = 0;
+                }
 
+            }
 
+            //Diagonal`(3)
+            for (int i = quant - 1; i < square.GetLength(0); i++)
+            {
+                int SumX = 0;
+                for (int j = 0; j < i + 1; j = j + 1)
+                {
+                    if (square[i - j, (square.GetLength(0) - 1) - j] == elements.X)
+                    {
+                        SumX++;
+                        if (SumX == quant)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                        SumX = 0;
+                }
 
+            }
 
-
+            //Diagonal`(4)
+            for (int i = quant - 1; i < square.GetLength(0); i++)
+            {
+                int SumX = 0;
+                for (int j = 0; j < i + 1; j = j + 1)
+                {
+                    if (square[(square.GetLength(0) - 1) - j, ((square.GetLength(0) - 1) - i) + j] == elements.X)
+                    {
+                        SumX++;
+                        if (SumX == quant)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                        SumX = 0;
+                }
+            }
             return false;              
         }
 
 
-        static bool Check_WinO(string[,] square)
+        static bool Check_WinO(elements[,] square)
         {
-            if (square[2, 2] == "O")
-            {
-                if (square[2, 0] == "O" && square[2, 4] == "O")
-                    return true;
-
-                else if (square[0, 2] == "O" && square[4, 2] == "O")
-                    return true;
-
-                else if (square[0, 0] == "O" && square[4, 4] == "O")
-                    return true;
-
-                else if (square[0, 4] == "O" && square[4, 0] == "O")
-                    return true;
-            }
-
-            //боковые 
-            else if (square[0, 2] == "O" && square[0, 0] == "O" && square[0, 4] == "O")
-            {
-                return true;
-            }
-
-            else if (square[2, 0] == "O" && square[0, 0] == "O" && square[4, 0] == "O")
-            {
-                return true;
-            }
-
-            else if (square[4, 2] == "O" && square[4, 0] == "O" && square[4, 4] == "O")
-            {
-                return true;
-            }
-
-            else if (square[2, 4] == "O" && square[0, 4] == "O" && square[4, 4] == "O")
-            {
-                return true;
-            }
             
             return false;
         }
 
 
-        static bool Check_X(string [,] square,int x)
+        static bool Check_X(elements[,] square,int x)
         {
-            for (int i = 1; i <= square.GetLength(0) / 2; i++)
+            for (int i = 1; i <= square.GetLength(0); i++)
             {
                 if (x == i)
                 {
@@ -138,18 +160,18 @@ namespace ConsoleApplication3
             return false;
         }
 
-        static bool Check_PlaceX(string[,] square,int x, int y)
+        static bool Check_PlaceX(elements[,] square,int x, int y)
         {
-            if (square[x,y]=="O")
+            if (square[x,y]==elements.O)
             {
                 return true;
             }
             return false;
         }
 
-        static bool Check_PlaceY(string[,] square, int x, int y)
+        static bool Check_PlaceY(elements[,] square, int x, int y)
         {
-            if (square[x, y] == "X")
+            if (square[x, y] == elements.X)
             {
                 return true;
             }
@@ -158,32 +180,32 @@ namespace ConsoleApplication3
 
 
 
-        static void Input(string[,] square)
+        static void Input(elements[,] square)
         {
             int Coord_X = -1; int Coord_Y = -1;
             
             while (true)
             {
 
-                Console.WriteLine("Введите координаты X(от 1 до "+square.GetLength(0)/2+")");
+                Console.WriteLine("Введите координаты X(от 1 до "+square.GetLength(0)+")");
                 bool isNumber = Int32.TryParse(Console.ReadLine(), out Coord_X);
                 while (!isNumber || !Check_X(square,Coord_X))
                 {
                     Console.WriteLine("Error");
-                    Console.WriteLine("Введите координаты X(от 1 до "+square.GetLength(0)/2 + ")");
+                    Console.WriteLine("Введите координаты X(от 1 до "+square.GetLength(0) + ")");
                     isNumber = Int32.TryParse(Console.ReadLine(), out Coord_X);
                 }
 
-                Console.WriteLine("Введите координаты Y(от 1 до " + square.GetLength(0) / 2 + ")");
+                Console.WriteLine("Введите координаты Y(от 1 до " + square.GetLength(0)  + ")");
                 isNumber = Int32.TryParse(Console.ReadLine(), out Coord_Y);
                 while (!isNumber || !Check_X(square,Coord_Y))
                 {
                     Console.WriteLine("Error");
-                    Console.WriteLine("Введите координаты Y(от 1 до " + square.GetLength(0) / 2 + ")");
+                    Console.WriteLine("Введите координаты Y(от 1 до " + square.GetLength(0)  + ")");
                     isNumber = Int32.TryParse(Console.ReadLine(), out Coord_Y);
                 }
-                Coord_X = Coord_X * 2 - 2;
-                Coord_Y = Coord_Y * 2 - 2;
+                Coord_X = Coord_X -1 ;
+                Coord_Y = Coord_Y -1 ;
 
                 if (Check_PlaceX(square, Coord_X, Coord_Y) || Check_PlaceY(square, Coord_X, Coord_Y))
                 {
@@ -194,39 +216,35 @@ namespace ConsoleApplication3
                     break;
             }
 
-            square[Coord_X, Coord_Y] = "X";
-            //prnt(square);
+            square[Coord_X, Coord_Y] = elements.X;
+            prnt(square);
 
         }
 
-        static void Turn_Bot(string[,] square)
+        static void Turn_Bot(elements[,] square)
         {
             int Coord_X = -1; int Coord_Y = -1;
             while (true)
             {
                 Random rnd = new Random();
-                 Coord_X = rnd.Next(1, square.GetLength(0)/2+1);
-                 Coord_Y = rnd.Next(1, square.GetLength(0)/2+1);
-                Coord_X = Coord_X * 2 - 2;
-                Coord_Y = Coord_Y * 2 - 2;
+                 Coord_X = rnd.Next(1, square.GetLength(0)+1);
+                 Coord_Y = rnd.Next(1, square.GetLength(0)+1);
+                Coord_X = Coord_X -1;
+                Coord_Y = Coord_Y -1;
                 if (!(Check_PlaceY(square, Coord_X, Coord_Y) || Check_PlaceX(square, Coord_X, Coord_Y)))
                 {
                     break;
                 }
             }
-            square[Coord_X, Coord_Y] = "O";
-           // prnt(square);
+            square[Coord_X, Coord_Y] = elements.O;
+            prnt(square);
         }
         
         static void prnt(elements[,] square)
         {
             for (int i = 0; i < square.GetLength(0); i++)
             {
-              /*if(i==0)
-                {
-                    Console.Write(" ");
-                }*/
-                Console.Write(" "+ (i +1)/*+" "*/);
+                Console.Write(" "+ (i +1));
             }
                 Console.WriteLine();
             for (int i = 0; i < square.GetLength(0); i++)
@@ -256,6 +274,7 @@ namespace ConsoleApplication3
         static void Main(string[] args)
         {
             int LengX = 0;
+            int quant = 0;
             Console.WriteLine("Введите размер поля");
             bool isNumber = Int32.TryParse(Console.ReadLine(), out LengX);
             while (!isNumber || LengX<3)
@@ -264,11 +283,20 @@ namespace ConsoleApplication3
                 Console.WriteLine("Введите размер поля");
                 isNumber = Int32.TryParse(Console.ReadLine(), out LengX);
             }
-            //LengX = LengX * 2+1;
+
+            Console.WriteLine("Введите кол-во для победы");
+             isNumber = Int32.TryParse(Console.ReadLine(), out quant);
+            while (!isNumber || quant > LengX||quant<3)
+            {
+                Console.WriteLine("Error");
+                Console.WriteLine("Введите кол-во для победы");
+                isNumber = Int32.TryParse(Console.ReadLine(), out quant);
+            }
+
             elements[,] square = new elements[LengX, LengX];
             prnt(square);
             
-           /* int text=5;
+            int text=5;
             do
             {
                 if(Check_WinO(square))
@@ -279,44 +307,13 @@ namespace ConsoleApplication3
                 Input(square);
                 Turn_Bot(square);
             }
-            while (!Check_WinX(square));
+            while (!Check_WinX(square,quant));
             if(text==1)            
                 Console.WriteLine("Ты кот");
             else            
-            Console.WriteLine("Тебе удалось это аутист");*/
+            Console.WriteLine("Тебе удалось это аутист");
             Console.ReadKey();
         }
        
     }
 }
-
-
-/*          for (int i = 0; i < LengX-2; i++)
-                {
-                    for (int j = 1; j < LengX-1; j = j + 2)
-                    {
-                        square[i, j] = elements.Vert;
-                    }
-                }
-                for (int i = 1; i < LengX-2; i = i + 2)
-                {
-                    for (int j = 0; j < LengX-2; j = j + 2)
-                    {
-                        square[i, j] = elements.Horiz;
-                    }
-                }
-
-
-
-            for (int i = 0; i < LengX-2; i=i+2)
-            {
-                for (int j = 0; j < LengX-2; j=j+2)
-                {
-                    square[i,j] = elements.empty;
-                }
-                int z = 1 + i / 2;
-                String number = Convert.ToString(z);
-                square[LengX - 1, i] =  number+" ";
-                square[i, LengX - 1] = " " + number;
-            }
-*/
