@@ -13,9 +13,12 @@ namespace ConsoleApplication4
 
         }
         static void Main(string[] args) {
-            char[][] multiArray = new char[][] { new char[] { 'a', 'b', 'c' }, new char[] { 'b', 'c' } };
-            Console.WriteLine(multiArray[0].Length);
-            Console.ReadLine();
+            char ch = 'a';
+            char ch1 = 'b';
+            ch = (char) (ch + ch1*2);
+            Console.WriteLine(ch);
+            Console.ReadKey();
+
         }
     }
 }

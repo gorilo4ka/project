@@ -10,40 +10,14 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
-           
-            int[] mas1 = new int[20];
-            for(int i=0;i<20;i++)
-            {
-                mas1[i] = rand.Next(100);
-            }
-            int count = 0;
-            Console.WriteLine(maxInt(mas1,ref count)+" " + count);
+            int i = 87;
+            int b = i / 10%10;
+            Console.WriteLine(i / 100);
+            
+            Console.WriteLine(b);
+            Console.WriteLine(i % 10);
 
-            for (int i = 0; i < mas1.Length; i++)
-            {
-                Console.Write(mas1[i] + " ");
-            }
             Console.ReadKey();
-        }
-
-        static int maxInt(int[] mas1, ref int count)
-        {
-            int max = 0;            
-            int mas1_count=0;
-            foreach (int x in mas1)
-            {
-                
-                if (x > max)
-                {
-                    max = x;
-                    mas1_count = count;
-                }
-                count++;
-
-            }
-            count = mas1_count;
-            return max;         
         }
 
     }
