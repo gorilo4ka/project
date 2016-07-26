@@ -16,7 +16,7 @@ namespace ConsoleApplication3
             t           
         }
 
-        static bool Check_Win(elements[,] square,int quant,elements test)
+        static bool Check_Win(elements[,] square,int quant,elements check_element)
         {
             //Vertikal`
 
@@ -25,7 +25,7 @@ namespace ConsoleApplication3
                 int SumX = 0;
                 for (int j = 0; j < square.GetLength(0); j++)
                 {
-                    if (square[j, i] == test)
+                    if (square[j, i] == check_element)
                     {
                         SumX++;
                         if (SumX == quant)
@@ -43,7 +43,7 @@ namespace ConsoleApplication3
                 int SumX = 0;
                 for (int j = 0; j < square.GetLength(0); j++)
                 {
-                    if (square[i, j] == test)
+                    if (square[i, j] == check_element)
                     {
                         SumX++;
                         if (SumX == quant)
@@ -62,7 +62,7 @@ namespace ConsoleApplication3
                 for (int j = 0; j < i+1; j = j + 1)
                 {
                    
-                    if (square[i - j, j] == test)
+                    if (square[i - j, j] == check_element)
                     {                        
                            SumX++;
                         if (SumX == quant)
@@ -81,7 +81,7 @@ namespace ConsoleApplication3
                 int SumX = 0;
                 for (int j = 0; j < i + 1; j = j + 1)
                 {
-                    if (square[(square.GetLength(0) - 1) - j, i - j] == test)
+                    if (square[(square.GetLength(0) - 1) - j, i - j] == check_element)
                     {
                         SumX++;
                         if (SumX == quant)
@@ -101,7 +101,7 @@ namespace ConsoleApplication3
                 int SumX = 0;
                 for (int j = 0; j < i + 1; j = j + 1)
                 {
-                    if (square[i - j, (square.GetLength(0) - 1) - j] == test)
+                    if (square[i - j, (square.GetLength(0) - 1) - j] == check_element)
                     {
                         SumX++;
                         if (SumX == quant)
@@ -121,7 +121,7 @@ namespace ConsoleApplication3
                 int SumX = 0;
                 for (int j = 0; j < i + 1; j = j + 1)
                 {
-                    if (square[(square.GetLength(0) - 1) - j, ((square.GetLength(0) - 1) - i) + j] == test)
+                    if (square[(square.GetLength(0) - 1) - j, ((square.GetLength(0) - 1) - i) + j] == check_element)
                     {
                         SumX++;
                         if (SumX == quant)
