@@ -2,7 +2,7 @@
 {
    public class MainString
     {
-        char[] new_string= { 'a', 'b', 'c' };
+        public char[] new_string=null;
         static string error = "Ошибка!";
         char[] err = error.ToCharArray();
 
@@ -11,6 +11,13 @@
         }
         public MainString(char a, int b)
         {
+            if (b < 0)
+                b = 0;
+            new_string = new char[b];
+            for (int i = 0; i < b; i++)
+            {
+                new_string[i] = a;
+            }
         }
         public MainString(char[] a, int b)
         {
@@ -54,5 +61,21 @@
             
             return new_Concat;
         }
+
+        public MainString Class_Concat(MainString ob)
+        {
+            MainString ozz = new MainString();
+            ozz.new_string = new char[new_string.Length+ob.Length];
+            for (int i = 0; i < new_string.Length; i++)
+            {
+                ozz.new_string[i] = new_string[i];
+            }
+            for (int j = 0; j < ob.Length; j++)
+            {
+                ozz.new_string[new_string.Length + j] = ob.new_string[j];
+            }
+            return  ozz;
+        }
+
     }
 }
