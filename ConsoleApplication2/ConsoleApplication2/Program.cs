@@ -1,24 +1,65 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//sadhjasduihdui Lion
-namespace ConsoleApplication2
+
+public class SortProblem
 {
-    class Program
+    public static void Main()
     {
-        static void Main(string[] args)
+        Sort();
+    }
+
+    
+
+
+    public static void Sort()
+    {
         {
-            int i = 87;
-            int b = i / 10%10;
-            Console.WriteLine(i / 100);
-            
-            Console.WriteLine(b);
-            Console.WriteLine(i % 10);
+            var a = new[]
+            {
+              10, 10, 5, 2, 2, 5, 6, 7, 8, 15, 4, 4, 4, 2, 3, 5, 5, 36, 32, 623, 7, 475, 7, 2, 2, 44, 5, 6, 7, 71, 2
+};
+
+
+            /*
+            for (int i = 0; i < a.Length; i++)
+            {
+                int max = a[i];
+                if()
+                int index = distin(a, i);
+                Console.Write($"{index} ");
+                int memory = a[i];
+                a[i] = a[index];
+                a[index] = memory;
+            }*/
+            for (int j = 0; j < a.Length; j++)
+            {
+                int max = a[j];
+                int index = j;
+                for (int i = 1+j; i < a.Length; i++)
+                {
+                    if (a[i] > max)
+                    {
+                        max = a[i];
+                        index = i;
+                    }
+                }
+                int memory = a[j];
+                a[j] = a[index];
+                a[index] = memory;
+                Console.Write( " " + index);
+            }
+
+            Console.WriteLine();
+
+
+           for (int i = 0; i < a.Length; i++)
+            {
+
+                Console.Write($"{a[i]} ");
+            }
+
+
 
             Console.ReadKey();
         }
-
     }
 }

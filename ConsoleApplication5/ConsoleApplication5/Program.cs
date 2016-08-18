@@ -1,12 +1,26 @@
 ﻿using System;
-
-namespace ConsoleApplication
+class Swap
 {
-    public class Program
+    // Этот метод меняет местами значения своих аргументов.
+    public void swap(ref int a, ref int b)
     {
-        void StopService(bool forceStop = false, string serviceName, int serviceID = 1)
-        {
-
-        }
+       
+    }
+}
+class SwapDemo
+{
+    public static void Main()
+    {
+        Swap ob = new Swap();
+        int x = 10, y = 20;
+        Console.WriteLine("x и y перед вызовом: " +
+        x + " " + y);
+        int t;
+        t = x;
+        x = y;
+        y = t;
+        Console.WriteLine("x и y после вызова: " +
+        x + " " + y);
+        Console.ReadKey();
     }
 }
