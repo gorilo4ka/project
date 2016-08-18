@@ -2,8 +2,10 @@
 {
    public class MainString
     {
-        char[] new_string;
-        
+        char[] new_string= { 'a', 'b', 'c' };
+        static string error = "Ошибка!";
+        char[] err = error.ToCharArray();
+
         public MainString()
         {
         }
@@ -19,7 +21,7 @@
         {
             new_string = a;
         }
-        public int capacity
+        public int Length
         {           
             get
             {
@@ -38,19 +40,16 @@
             return new_string[a];
         }
 
-        public char[] Char_Concat(params char [] a)
+        public char[] Char_Concat( char [] a)
         {
-            char[] new_Concat = new char[a.Length];
-            string error = "Ошибка!";
-            char[] char_0 = error.ToCharArray();
-            if (a.Length == 0)
+            char[] new_Concat = new char[new_string.Length+a.Length];           
+            for (int i = 0; i < new_string.Length; i++)
             {
-               return char_0;
-            }          
-            
-            for (int i = 0; i < a.Length; i++)
+                new_Concat[i] = new_string[i];
+            }
+            for (int j = 0; j < a.Length; j++)
             {
-                new_Concat[i] = a[i];
+                new_Concat[new_string.Length + j] = a[j];
             }
             
             return new_Concat;

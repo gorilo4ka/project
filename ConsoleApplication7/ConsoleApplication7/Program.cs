@@ -10,15 +10,17 @@ namespace ConsoleApplication7
     {
         static void Main(string[] args)
         {
-            char[] les = { 'a','b','c'};
+            char[] les = { 'd','e','r'};
             char _1 = 's';
             char _2 = 'u';
             char _3 = 'c';
             char _4 = 'k';
-            MainString object1 = new MainString(les, 2);
-            Console.WriteLine(object1.capacity);            
-            Console.WriteLine(object1.Char_index(3));
-            Console.WriteLine(object1.Char_Concat());
+            MainString object1 = new MainString('l', 2);
+            String str = new String(les, 0, 3);
+            //Console.WriteLine(str.Length);
+            //Console.WriteLine(object1.Length);            
+            //Console.WriteLine(object1.Char_index(3));
+            Console.WriteLine(object1.Char_Concat(les));
             Console.ReadKey();
 
         }
