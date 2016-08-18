@@ -1,9 +1,12 @@
 ﻿namespace ConsoleApplication7
 {
-   public class MainString
+    public class MainString
     {
-        public char[] new_string=null;
-        static string error = "Ошибка!";
+        char[] new_string = null;
+       public char [] New_string { get { return new_string; }
+                                   set { new_string = value; }
+                                 }
+    static string error = "Ошибка!";
         char[] err = error.ToCharArray();
 
         public MainString()
@@ -13,66 +16,66 @@
         {
             if (b < 0)
                 b = 0;
-            new_string = new char[b];
+            New_string = new char[b];
             for (int i = 0; i < b; i++)
             {
-                new_string[i] = a;
+                New_string[i] = a;
             }
         }
         public MainString(char[] a, int b)
         {
-            new_string = a;
+            New_string = a;
             
         }
         public MainString(char[] a, int b, int c)
         {
-            new_string = a;
+            New_string = a;
         }
         public int Length
         {           
             get
             {
-                if (new_string == null)
+                if (New_string == null)
                 {
                     return 0;
                 }
-                return new_string.Length;
+                return New_string.Length;
             }
         }
 
         public char Char_index(int a)
         {
-            if (a < 0 || a >= new_string.Length)
+            if (a < 0 || a >= New_string.Length)
                 return '"';
-            return new_string[a];
+            return New_string[a];
         }
 
-        public char[] Char_Concat( char [] a)
+        public char[] Concat( char [] a)
         {
-            char[] new_Concat = new char[new_string.Length+a.Length];           
-            for (int i = 0; i < new_string.Length; i++)
+            char[] new_Concat = new char[New_string.Length+a.Length];           
+            for (int i = 0; i < New_string.Length; i++)
             {
-                new_Concat[i] = new_string[i];
+                new_Concat[i] = New_string[i];
             }
             for (int j = 0; j < a.Length; j++)
             {
-                new_Concat[new_string.Length + j] = a[j];
+                new_Concat[New_string.Length + j] = a[j];
             }
             
             return new_Concat;
         }
 
-        public MainString Class_Concat(MainString ob)
+        public MainString Concat(MainString ob)
         {
             MainString ozz = new MainString();
-            ozz.new_string = new char[new_string.Length+ob.Length];
-            for (int i = 0; i < new_string.Length; i++)
+            ozz.New_string = new char[New_string.Length+ob.Length];
+            for (int i = 0; i < New_string.Length; i++)
             {
-                ozz.new_string[i] = new_string[i];
+                ozz.New_string[i] = New_string[i];
             }
             for (int j = 0; j < ob.Length; j++)
             {
-                ozz.new_string[new_string.Length + j] = ob.new_string[j];
+                ozz.New_string[New_string.Length + j] = ob.New_string[j];
             }
             return  ozz;
         }
