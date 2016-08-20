@@ -5,10 +5,8 @@
         char[] new_string = null;
        public char [] New_string { get { return new_string; }
                                    set { new_string = value; }
-                                 }
-    static string error = "Ошибка!";
-        char[] err = error.ToCharArray();
-
+                                 }  
+        #region Construct
         public MainString()
         {
         }
@@ -22,15 +20,33 @@
                 New_string[i] = a;
             }
         }
-        public MainString(char[] a, int b)
+        public MainString(char[] a)
         {
-            New_string = a;
-            
+           
+            New_string = new char[a.Length];
+            for (int i = 0; i < a.Length; i++)
+            {
+                New_string[i] = a[i];
+            }            
         }
         public MainString(char[] a, int b, int c)
         {
-            New_string = a;
+            if (a == null || b < 0 || c < 0 || b + c > a.Length)
+            {
+                new_string= new char[0];
+                
+                return;
+            }
+            New_string = new char[c];
+            
+            for ( int i = b,j =0; i < c; i++,j++)
+            {
+                New_string[i] = a[j];
+            }
+            
         }
+        #endregion
+        #region Property 
         public int Length
         {           
             get
@@ -42,7 +58,8 @@
                 return New_string.Length;
             }
         }
-
+        #endregion
+        #region Methods
         public char Char_index(int a)
         {
             if (a < 0 || a >= New_string.Length)
@@ -80,5 +97,21 @@
             return  ozz;
         }
 
+        public MainString Copy(MainString ob)
+        {
+
+            MainString ozz = new MainString();
+            if (ob == null)
+            {
+                 return ozz=null;
+            }
+            ozz.new_string = new char[ob.new_string.Length];
+            for (int i = 0; i < ozz.new_string.Length; i++)
+            {
+                ozz.new_string[i] = ob.new_string[i];
+            }
+            return ozz;
+        }
+        #endregion
     }
 }
