@@ -3,9 +3,7 @@
     public class MainString
     {
         char[] new_string = null;
-       public char [] New_string { get { return new_string; }
-                                   set { new_string = value; }
-                                 }  
+      
         #region Construct
         public MainString()
         {
@@ -47,6 +45,12 @@
         }
         #endregion
         #region Property 
+        public char[] New_string
+        {
+            get { return new_string; }
+            set { new_string = value; }
+        }
+
         public int Length
         {           
             get
@@ -99,19 +103,62 @@
 
         public MainString Copy(MainString ob)
         {
-
-            MainString ozz = new MainString();
+            MainString ozz=new MainString();
             if (ob == null)
+                return  null;
+            if (ob.new_string == null)
             {
-                 return ozz=null;
+                ozz.new_string = null;
+                return ozz;
             }
-            ozz.new_string = new char[ob.new_string.Length];
-            for (int i = 0; i < ozz.new_string.Length; i++)
-            {
-                ozz.new_string[i] = ob.new_string[i];
-            }
+            ozz = new MainString(ob.new_string);            
             return ozz;
         }
+
+       public int Indexof (char a, int start_Index)
+        {
+            if (start_Index < 0)
+            {
+                return -1;
+            }
+            for (int i = start_Index; i < new_string.Length; i++)
+            {
+                if (new_string[i]==a)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public int Indexof(char a)
+        {
+            for (int i = 0; i < new_string.Length; i++)
+            {
+                if (new_string[i] == a)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public int Indexof(char a, int start_Index,int count)
+        {
+            if (start_Index < 0|| count<0||start_Index>new_string.Length||count> new_string.Length-start_Index)
+            {
+                return -1;
+            }
+            for (int i = start_Index; i < count; i++)
+            {
+                if (new_string[i] == a)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         #endregion
     }
 }
