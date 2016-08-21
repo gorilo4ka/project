@@ -45,7 +45,24 @@
         }
         #endregion
         #region Property 
-        public char[] New_string
+        public char this[int index]
+       {
+            set
+            {
+                new_string[index] = value;
+            }
+
+            get
+            {
+                return new_string[index];
+            }
+            }
+        }
+       
+
+
+
+    public char[] New_string
         {
             get { return new_string; }
             set { new_string = value; }
@@ -198,6 +215,59 @@
                     LastIndex = startIndex - i;
             }
             return LastIndex;
+        }
+
+        public char[] Remove(int startIndex)
+        {
+            char[] Remove_string;
+            if (startIndex<0||startIndex>new_string.Length)
+            {
+                return  new char[0];
+            }
+            Remove_string = new char[startIndex];
+            for (int i = 0; i < startIndex  ; i++)
+            {
+                Remove_string[i] = new_string[i];
+            }
+            return Remove_string;
+        }
+
+
+        public char[] Remove(int startIndex,int count)
+        {
+            char[] Remove_string;
+            if (startIndex < 0||count<0 || startIndex > new_string.Length||startIndex+count>new_string.Length)
+            {
+                return  new char[0];
+            }
+            Remove_string = new char[new_string.Length-count];
+            for (int i = 0; i < startIndex; i++)
+            {
+                Remove_string[i] = new_string[i];
+            }
+            for (int    j = startIndex; j < Remove_string.Length; j++)
+            {
+                Remove_string[j] = new_string[j+count];
+            }
+            return Remove_string;
+        }
+
+        public char[] Replace(char oldChar,char newChar)
+        {
+            char[] Replace_string;
+            Replace_string = new char[new_string.Length];
+            for (int i = 0; i < Replace_string.Length; i++)
+            {
+                Replace_string[i] = new_string[i];
+            }
+            for (int i = 0; i < Replace_string.Length; i++)
+            {
+                if (Replace_string[i]==oldChar)
+                {
+                    Replace_string[i] = newChar;
+                }
+            }
+            return Replace_string;
         }
 
         #endregion
