@@ -149,7 +149,7 @@
             {
                 return -1;
             }
-            for (int i = start_Index; i < count; i++)
+            for (int i = start_Index; i < start_Index+count; i++)
             {
                 if (new_string[i] == a)
                 {
@@ -157,6 +157,47 @@
                 }
             }
             return -1;
+        }
+
+        public int LastIndexOf(char a)
+        {
+            int LastIndex = -1;
+            for (int i = 0; i < new_string.Length; i++)
+            {
+                if (a == new_string[i])
+                    LastIndex = i;
+            }
+            return LastIndex;
+        }
+
+        public int LastIndexOf(char a,int startIndex)
+        {
+            int LastIndex = -1;
+            if (startIndex<0||startIndex>=new_string.Length)
+            {
+                return LastIndex;
+            }
+            for (int i = startIndex; i > 0; i--)
+            {
+                if (a == new_string[i])
+                    LastIndex = startIndex-i;
+            }
+            return LastIndex;
+        }
+
+        public int LastIndexOf(char a, int startIndex,int count)
+        {
+            int LastIndex = -1;
+            if (startIndex < 0 || startIndex >= new_string.Length||startIndex-count+1<0)
+            {
+                return LastIndex;
+            }
+            for (int i = startIndex; i > startIndex-count; i--)
+            {
+                if (a == new_string[i])
+                    LastIndex = startIndex - i;
+            }
+            return LastIndex;
         }
 
         #endregion

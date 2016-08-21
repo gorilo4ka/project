@@ -10,7 +10,7 @@ namespace ConsoleApplication7
     {
         static void Main(string[] args)
         {
-            char[] les = { 'd', 'e', 'r','k' };
+            char[] les = { 'c', 'a', 'n','a', 'l' };
             char _1 = 's';
             char _2 = 'u';
             char _3 = 'c';
@@ -21,8 +21,8 @@ namespace ConsoleApplication7
             //MainString object3 = new MainString(les, 0, 4);
             //Console.WriteLine(object3.New_string);
 
-          
-            Console.WriteLine(object1.System_CAPS_pubmethod(_4,0));
+
+            Console.WriteLine(object1.LastIndexOf('a',4));
 
             //Console.WriteLine(object3.New_string);
             Console.ReadKey();
