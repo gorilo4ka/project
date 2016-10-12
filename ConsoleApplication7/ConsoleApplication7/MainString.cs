@@ -1,4 +1,4 @@
-﻿namespace ConsoleApplication7
+﻿namespace Работа_со_строками
 {
     public class MainString
     {
@@ -57,7 +57,7 @@
                 return new_string[index];
             }
             }
-        }
+        
        
 
 
@@ -268,6 +268,21 @@
                 }
             }
             return Replace_string;
+        }
+
+        public static MainString operator +(MainString ob,MainString ob1)
+        {
+            MainString news= new MainString();
+            news.New_string = new char[ob.Length+ob1.Length];
+            for (int i = 0; i < ob.Length; i++)
+            {
+                news.New_string[i] = ob.New_string[i];
+            }
+            for (int i = 0; i < ob1.Length; i++)
+            {
+                news.New_string[ob.Length+i] = ob1.New_string[i];
+            }
+            return news;
         }
 
         #endregion

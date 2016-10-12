@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Работа_со_строками;
 
 namespace ConsoleApplication7
 {
@@ -17,13 +18,16 @@ namespace ConsoleApplication7
             char _4 = 'k';
             char _5 = 'e';
             char _6 = 'a';
-            MainString object1 = new MainString(les);
+            MainString object1 = new MainString(les,0,3);
+            MainString object2 = new MainString(les);
+            object2.New_string= object2.Replace('c',' ');
+          
             //MainString object2 = new MainString('a', 4);
-            //MainString object3 = new MainString(les, 0, 4);
+            MainString object3 = new MainString();
             //Console.WriteLine(object3.New_string);
 
-
-            Console.WriteLine(object1.Replace(_3,_6));
+            object3 = object1 + object2;
+            Console.WriteLine(object3.New_string);
 
             //Console.WriteLine(object3.New_string);
             Console.ReadKey();
