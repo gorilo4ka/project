@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Работа_со_строками;
 
-namespace ConsoleApplication7
+namespace Работа_со_строками
 {
     class Program
     {
