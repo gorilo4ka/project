@@ -270,34 +270,18 @@
             return Replace_string;
         }
 
-        public static MainString operator +(MainString object1,MainString object2)
+        public static MainString operator +(MainString ob,MainString ob1)
         {
             MainString news= new MainString();
-            news.New_string = new char[object1.Length+ object2.Length];
-            for (int i = 0; i < object1.Length; i++)
+            news.New_string = new char[ob.Length+ob1.Length];
+            for (int i = 0; i < ob.Length; i++)
             {
-                news.New_string[i] = object1.New_string[i];
+                news.New_string[i] = ob.New_string[i];
             }
-            for (int i = 0; i < object2.Length; i++)
+            for (int i = 0; i < ob1.Length; i++)
             {
-                news.New_string[object1.Length+i] = object2.New_string[i];
+                news.New_string[ob.Length+i] = ob1.New_string[i];
             }
-            return news;
-        }
-
-        public static MainString operator +(MainString object1,char [] object2)
-        {
-            MainString news = new MainString();
-            news.new_string = new char[object1.Length + object2.Length];
-            for (int i = 0; i < object1.Length; i++)
-            {
-                news.New_string[i] = object1.New_string[i];
-            }
-            for (int i = 0; i < object2.Length; i++)
-            {
-                news.New_string[object1.Length + i] = object2[i];
-            }
-
             return news;
         }
 
