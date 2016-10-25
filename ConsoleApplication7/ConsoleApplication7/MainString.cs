@@ -299,7 +299,39 @@
 
             return news;
         }
-
-            #endregion
+        public static  bool  operator !=(MainString object1, MainString object2)
+        {
+            if (object1.New_string.Length == object2.New_string.Length)
+                return false;
+            for (int i = 0; i < object1.New_string.Length; i++)
+            {
+                if (object1.New_string[i] == object2.New_string[i])
+                    return false;
+            }
+            return true;
         }
+        public static  bool operator ==(MainString object1, MainString object2)
+        {
+            if (object1.New_string.Length != object2.New_string.Length)
+                return false;
+            for (int i = 0; i < object1.New_string.Length; i++)
+            {
+                if(object1.New_string[i]!= object2.New_string[i])
+                    return false;
+            }
+            return true;
+        }
+       /* public static bool operator MainString.Equals (MainString object1, MainString object2)
+        {
+            if (object1.New_string == object2.New_string)
+            {
+
+                return true;
+            }
+            else
+                return false;
+        }*/
+
+        #endregion
+    }
 }
