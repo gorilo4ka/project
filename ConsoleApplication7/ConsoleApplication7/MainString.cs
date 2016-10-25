@@ -284,7 +284,22 @@
             }
             return news;
         }
+        public static MainString operator +(MainString object1, char[] object2)
+        {
+            MainString news = new MainString();
+            news.new_string = new char[object1.Length + object2.Length];
+            for (int i = 0; i < object1.Length; i++)
+            {
+                news.New_string[i] = object1.New_string[i];
+            }
+            for (int i = 0; i < object2.Length; i++)
+            {
+                news.New_string[object1.Length + i] = object2[i];
+            }
 
-        #endregion
-    }
+            return news;
+        }
+
+            #endregion
+        }
 }

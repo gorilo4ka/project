@@ -26,7 +26,7 @@ namespace Работа_со_строками
             MainString object3 = new MainString();
             //Console.WriteLine(object3.New_string);
 
-            object3 = object1 + object2;
+            object3 = object1 + les;
             Console.WriteLine(object3.New_string);
 
             //Console.WriteLine(object3.New_string);
