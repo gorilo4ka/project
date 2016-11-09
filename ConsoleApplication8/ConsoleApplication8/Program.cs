@@ -31,7 +31,8 @@ public abstract class Figure
     #endregion
     #region Methods
 
-
+    public abstract void showStyle();
+   
     //Метод возвращает длинну  по двум точкам.
     public double length_Line(int [] point1,int [] point2)
     {
@@ -43,35 +44,35 @@ public abstract class Figure
 }
 
 
-public class Circle:Figure
+public class Circle : Figure
 {
     double radius;
-    public Circle(int [] point1, int [] point2):base(point1,point2)
+    public Circle(int[] point1, int[] point2) : base(point1, point2)
 
     {
 
         radius = length_Line(point1, point2);
+       
     }
 
 
-     public override double area()
-     {
+    public override double area()
+    {
 
-         return Pi*Math.Pow(radius, 2);
-     }
-     public override double perimetr()
-     {
+        return Pi * Math.Pow(radius, 2);
+    }
+    public override double perimetr()
+    {
 
-         return 2* Pi * radius;
-     }
-     public void showStyle()
-     {
-        Console.WriteLine("Круг радиус " +  radius);
-        Console.WriteLine("Круг площадь " + area());
-        Console.WriteLine("Круг периметр " + perimetr());
-     }
+        return 2 * Pi * radius;
+    }
+    public override void showStyle()
+    {
+       Console.WriteLine("Круг радиус " +  radius);
+       Console.WriteLine("Круг площадь " + area());
+       Console.WriteLine("Круг периметр " + perimetr());
+    }
 }
-
 public class Rhombus : Figure
 {
     double diagonal1;
@@ -87,13 +88,7 @@ public class Rhombus : Figure
         if (side1 != side2)
         {
             Console.WriteLine("Это не ромб!");
-        }
-        else
-        {
-            Console.WriteLine("Ромб сторона  = " + side1);
-            Console.WriteLine("Ромб площадь " + area());
-            Console.WriteLine("Ромб периметр " + perimetr());
-        }
+        }        
 }
     public override double area()
     {
@@ -104,7 +99,12 @@ public class Rhombus : Figure
     {
         return 4*side1;
     }
-
+    public override void showStyle()
+    {
+        Console.WriteLine("Ромб сторона  = " + side1);
+        Console.WriteLine("Ромб площадь " + area());
+        Console.WriteLine("Ромб периметр " + perimetr());
+    }
 }
 
 
@@ -116,10 +116,21 @@ class Hello
         int[] point2 = new int[2] { 2, 2 };
         int[] point3 = new int[2] { 3, 3 };
         int[] point4 = new int[2] { 4, 4 };
-        Circle circ = new Circle(point1, point2);
-        circ.showStyle();
-        Rhombus romb = new Rhombus(point1, point2, point3, point4);
+        Circle circ1 = new Circle(point1, point2);
+        Circle circ2 = new Circle(point2, point4);        
+        Rhombus romb1 = new Rhombus(point1, point2, point3, point4);
+        Rhombus romb2 = new Rhombus(point1, point2, point3, point4);
+        Figure[] mas_figure = new Figure[4];
+        mas_figure[0] = circ1;
+        mas_figure[1] = circ2;
+        mas_figure[2] = romb1;
+        mas_figure[3] = romb2;
         
+        for (int i = 0; i < mas_figure.Length; i++)
+        {
+            mas_figure[i].showStyle();
+            Console.WriteLine();
+        }
         Console.ReadKey();
     }
 }
