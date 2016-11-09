@@ -6,7 +6,7 @@ public abstract class Figure
     public int [] point2 = new int [2];
     public int [] point3 = new int [2];
     public int [] point4 = new int [2];
-
+    #region Construct    
     public Figure(int [] Point1, int [] Point2)
     {
         point1 = Point1;
@@ -20,20 +20,26 @@ public abstract class Figure
         point4 = Point4;
 
     }
+    #endregion
+    #region Properties
+
 
     public double Pi
     {
         get {return pi; }       
     }
+    #endregion
+    #region Methods
 
-            //Метод возвращает длинну  по двум точкам.
+
+    //Метод возвращает длинну  по двум точкам.
     public double length_Line(int [] point1,int [] point2)
     {
         return Math.Sqrt(Math.Pow((point2[0] - point1[0]), 2) + Math.Pow((point2[1] - point1[1]), 2));
     }
     public abstract double area();
     public abstract double perimetr();
-
+    #endregion
 }
 
 
