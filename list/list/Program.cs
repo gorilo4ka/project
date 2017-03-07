@@ -46,6 +46,18 @@ namespace list
             Console.WriteLine();
             Console.WriteLine("Количество >50 - "+count);
             Console.WriteLine("позиция <16 - "+position);
+            int count_5;
+            int count_15;
+            Console.Write("Больше 5 - ");
+            Console.WriteLine(count_5 = list.Count(x => x > 5));
+            Console.Write("Меньше 15 - ");
+            Console.WriteLine( count_15 = list.Count(x => x < 15));
+            Console.Write("Больше 5 и Меньше 15 - "); 
+            Console.WriteLine(count_15 = list.Count(x => x < 15&&x>5));
+            List<string> list_ = new List<string> { "one", "two", "three", "four", "five" };
+            int count_4 = (list_.Count(i => i.Length == 4));          
+           
+            Console.Write(count_4);
             foreach (int items in list_even)
             {
                 if (items > 90)

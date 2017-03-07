@@ -75,15 +75,7 @@ namespace File
             catch (Exception)
             { }
             using (texts)
-            {
-                
-                
-                
-                
-                
-                
-                
-                
+            {          
             }
 
         }

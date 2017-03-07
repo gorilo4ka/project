@@ -4,9 +4,45 @@ namespace File
 {
     public class Client
     {
-        
-        
-         public Client()
+        private string Name;
+        private string Surname;
+        private string Patronymic;
+        private string Adress;
+        private string List;
+        private double id;
+
+        public string name
+        {
+            get { return Name; }
+            set { Name = value; }
+        }
+        public string surname
+        {
+            get { return Surname; }
+            set { Surname = value; }
+        }
+        public string patronymic
+        {
+            get { return Patronymic; }
+            set { Patronymic = value; }
+        }
+        public string adress
+        {
+            get { return Adress; }
+            set { Adress = value; }
+        }
+        public string list
+        {
+            get { return List; }
+            set { List = value; }
+        }
+        public double Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public Client()
         {
             string s=null;
             try
@@ -24,17 +60,18 @@ namespace File
 
 
             Console.WriteLine("Ввведите имя");
-            string Name = Console.ReadLine();
-            Console.WriteLine("Ввведите фамилию");
-            string Surname = Console.ReadLine();
-            Console.WriteLine("Ввведите отчество");
-            string Patronymic = Console.ReadLine();
-            Console.WriteLine("Ввведите адресс");
-            string Adress = Console.ReadLine();
-            Console.WriteLine("Ввведите список проектов");
-            string List = Console.ReadLine();
+             Name = Console.ReadLine();
 
-            Double id = 0;
+        Console.WriteLine("Ввведите фамилию");
+             Surname = Console.ReadLine();
+            Console.WriteLine("Ввведите отчество");
+             Patronymic = Console.ReadLine();
+            Console.WriteLine("Ввведите адресс");
+             Adress = Console.ReadLine();
+            Console.WriteLine("Ввведите список проектов");
+             List = Console.ReadLine();
+
+             id = 0;
             string oop="";
             char ravno = '=';
             try
