@@ -5,49 +5,49 @@ namespace File
 {
     class Project
     {
-        private string Dead_Line;
-        private string Planned_budget;
-        private string Real_budget;
-        private string Client_List;
-        private string Task_List;
-        private string Performer;
-        private string Complete_Status;
-        private double id; 
+        private string dead_Line;
+        private string planned_budget;
+        private string real_budget;
+        private string client_List;
+        private string task_List;
+        private string performer;
+        private string complete_Status;
+        private double id;
 
-        public string dead_Line
+        public string Dead_Line
         {
-            get { return Dead_Line; }
-            set { Dead_Line = value; }
+            get { return dead_Line; }
+            set { dead_Line = value; }
         }
-        public string planned_budget
+        public string Planned_budget
         {
-            get { return Planned_budget; }
-            set { Planned_budget = value; }
+            get { return planned_budget; }
+            set { planned_budget = value; }
         }
-        public string real_budget
+        public string Real_budget
         {
-            get { return Real_budget; }
-            set { Real_budget = value; }
+            get { return real_budget; }
+            set { real_budget = value; }
         }
-        public string client_List
+        public string Client_List
         {
-            get { return Client_List; }
-            set { Client_List = value; }
+            get { return client_List; }
+            set { client_List = value; }
         }
-        public string task_List
+        public string Task_List
         {
-            get { return Task_List; }
-            set { Task_List = value; }
+            get { return task_List; }
+            set { task_List = value; }
         }
-        public string performer
+        public string Performer
         {
-            get { return Performer; }
-            set { Performer = value; }
+            get { return performer; }
+            set { performer = value; }
         }
-        public string complete_Status
+        public string Complete_Status
         {
-            get { return Complete_Status; }
-            set { Complete_Status = value; }
+            get { return complete_Status; }
+            set { complete_Status = value; }
         }
         public double Id
         {
@@ -83,7 +83,7 @@ namespace File
                 Console.WriteLine("Файл клиент не создан");
                 return;
             }
-             id = 0;
+            Id = 0;
             string oop = "";
             char ravno = '=';
             try
@@ -101,14 +101,14 @@ namespace File
             { }
             texts.Write("id=" + (id) + " ---- ");
             Console.WriteLine("Ввведите Сроки выполнения");
-             Dead_Line = Console.ReadLine();
+            Dead_Line = Console.ReadLine();
             texts.Write("@" + Dead_Line + "@");
             Console.WriteLine("Ввведите планируемый бюджет");
-             Planned_budget = Console.ReadLine();
-            texts.Write(Planned_budget + "@");
+            Planned_budget = Console.ReadLine();
+            texts.Write(planned_budget + "@");
             Console.WriteLine("Ввведите реальный бюджет");
-             Real_budget = Console.ReadLine();
-            texts.Write(Real_budget + "@");
+            Real_budget = Console.ReadLine();
+            texts.Write(real_budget + "@");
             int i = -1;
             while (i != 0)
             {
@@ -179,13 +179,13 @@ namespace File
             }
 
             Console.WriteLine("Ввведите список заданий в проекте");
-             Task_List = Console.ReadLine();
+            Task_List = Console.ReadLine();
             texts.Write("@" +Task_List + "@");
             Console.WriteLine("Ввведите ответственного исполнителя");
-             Performer = Console.ReadLine();
+            Performer = Console.ReadLine();
             texts.Write(Performer + "@");
             Console.WriteLine("Ввведите статус завершения");
-             Complete_Status = Console.ReadLine();
+            Complete_Status = Console.ReadLine();
             texts.WriteLine(Complete_Status + "@");
             texts.Close();
 

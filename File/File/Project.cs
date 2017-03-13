@@ -5,8 +5,58 @@ namespace File
 {
     class Project
     {
+        private string dead_Line;
+        private string planned_budget;
+        private string real_budget;
+        private string client_List;
+        private string task_List;
+        private string performer;
+        private string complete_Status;
+        private double id;
+
+        public string Dead_Line
+        {
+            get { return dead_Line; }
+            set { dead_Line = value; }
+        }
+        public string Planned_budget
+        {
+            get { return planned_budget; }
+            set { planned_budget = value; }
+        }
+        public string Real_budget
+        {
+            get { return real_budget; }
+            set { real_budget = value; }
+        }
+        public string Client_List
+        {
+            get { return client_List; }
+            set { client_List = value; }
+        }
+        public string Task_List
+        {
+            get { return task_List; }
+            set { task_List = value; }
+        }
+        public string Performer
+        {
+            get { return performer; }
+            set { performer = value; }
+        }
+        public string Complete_Status
+        {
+            get { return complete_Status; }
+            set { complete_Status = value; }
+        }
+        public double Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public Project()
         {
+
             string s = null;
             try
             {
@@ -22,24 +72,24 @@ namespace File
             }
             StreamWriter texts = new StreamWriter("F:\\Project.txt",true);
             StreamWriter Cleint = new StreamWriter("F:\\Client.txt");
-            Double id = 0;
+            id = 0;
             string oop = "";
             char ravno = '=';
             texts.Write("id=" + (id) + " ---- ");
             Console.WriteLine("Ввведите Сроки выполнения");
-            string Dead_Line = Console.ReadLine();
+            Dead_Line = Console.ReadLine();
             texts.Write(Dead_Line + "@");
             Console.WriteLine("Ввведите планируемый бюджет");
-            string planned_budget = Console.ReadLine();
+            planned_budget = Console.ReadLine();
             texts.Write(planned_budget + "@");
             Console.WriteLine("Ввведите реальный бюджет");
-            string real_budget = Console.ReadLine();
+            real_budget = Console.ReadLine();
             texts.Write(real_budget + "@");
             int i = -1;
             while ( i !=0)
             {
                 Console.WriteLine("Ввведите список заказчиков.ФИО через пробел");
-                string Client_List = Console.ReadLine();
+                Client_List = Console.ReadLine();
                 texts.Write(Client_List + "@");
                 string op = " ---- ";
                 string ss = null;
@@ -52,13 +102,13 @@ namespace File
 
 
             Console.WriteLine("Ввведите список заданий в проекте");
-            string Task_List = Console.ReadLine();
+            Task_List = Console.ReadLine();
             texts.Write(Task_List + "@");
             Console.WriteLine("Ввведите ответственного исполнителя");
-            string Performer = Console.ReadLine();
+            Performer = Console.ReadLine();
             texts.Write(Performer + "@");
             Console.WriteLine("Ввведите статус завершения");
-            string Complete_Status = Console.ReadLine();
+            Complete_Status = Console.ReadLine();
             texts.WriteLine(Complete_Status + "@");
 
             try

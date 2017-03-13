@@ -20,7 +20,7 @@ namespace File
             switch (i)
             {
                 case 1:
-                    Client new_Client = new Client();                   
+                    Persons new_Client = new Persons();                   
                     break;
                 case 2:
                     Project new_Project = new Project();

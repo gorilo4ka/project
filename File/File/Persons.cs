@@ -2,39 +2,39 @@
 using System.IO;
 namespace File
 {
-    public class Client
+    public class Persons
     {
-        private string Name;
-        private string Surname;
-        private string Patronymic;
-        private string Adress;
-        private string List;
+        private string name;
+        private string surname;
+        private string patronymic;
+        private string adress;
+        private string list;
         private double id;
 
-        public string name
+        public string Name
         {
-            get { return Name; }
-            set { Name = value; }
+            get { return name; }
+            set { name = value; }
         }
-        public string surname
+        public string Surname
         {
-            get { return Surname; }
-            set { Surname = value; }
+            get { return surname; }
+            set { surname = value; }
         }
-        public string patronymic
+        public string Patronymic
         {
-            get { return Patronymic; }
-            set { Patronymic = value; }
+            get { return patronymic; }
+            set { patronymic = value; }
         }
-        public string adress
+        public string Adress
         {
-            get { return Adress; }
-            set { Adress = value; }
+            get { return adress; }
+            set { adress = value; }
         }
-        public string list
+        public string List
         {
-            get { return List; }
-            set { List = value; }
+            get { return list; }
+            set { list = value; }
         }
         public double Id
         {
@@ -42,7 +42,7 @@ namespace File
             set { id = value; }
         }
 
-        public Client()
+        public Persons()
         {
             string s=null;
             try
