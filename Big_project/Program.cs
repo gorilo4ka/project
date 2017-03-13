@@ -37,7 +37,7 @@ namespace File
             switch (i)
             {
                 case 1:
-                    Persons new_Client = new Persons();                   
+                    Person new_Client = new Person();                   
                     break;
                 case 2:
                     Project new_Project = new Project();

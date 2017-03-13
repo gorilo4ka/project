@@ -3,6 +3,12 @@ using System.IO;
 
 namespace File
 {
+    enum  Status 
+    {
+        Start,
+        Proces,
+        Finish        
+    }
     class Project
     {
         private string dead_Line;
@@ -11,7 +17,7 @@ namespace File
         private string client_List;
         private string task_List;
         private string performer;
-        private string complete_Status;
+        private Status complete_Status;
         private double id;
 
         public string Dead_Line
@@ -44,10 +50,11 @@ namespace File
             get { return performer; }
             set { performer = value; }
         }
-        public string Complete_Status
+        public Status Complete_Status
         {
             get { return complete_Status; }
-            set { complete_Status = value; }
+            set { complete_Status = 
+                    value; }
         }
         public double Id
         {
@@ -185,8 +192,8 @@ namespace File
             Performer = Console.ReadLine();
             texts.Write(Performer + "@");
             Console.WriteLine("Ввведите статус завершения");
-            Complete_Status = Console.ReadLine();
-            texts.WriteLine(Complete_Status + "@");
+           
+            texts.WriteLine(Complete_Status +"@");
             texts.Close();
 
         }

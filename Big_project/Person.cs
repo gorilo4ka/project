@@ -2,7 +2,7 @@
 using System.IO;
 namespace File
 {
-    public class Persons
+    public class Person
     {
         private string name;
         private string surname;
@@ -41,7 +41,7 @@ namespace File
             get { return id; }
             set { id = value; }
         }
-        public Persons()
+        public Person()
         {
             string s = null;
             try
