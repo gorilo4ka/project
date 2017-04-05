@@ -9,23 +9,23 @@ namespace File
 {
      class  Reader
     {
-        List<My_Task> task = new List<My_Task>();
-        public List<My_Task> Task
+        List<My_Task> Tasks = new List<My_Task>();
+        public List<My_Task> task
         {
-            get { return task; }
-            set { task = value; }
+            get { return Tasks; }
+            set { Tasks = value; }
         }
-        List<Person> person = new List<Person>();
-        public List<Person> Person
+        List<Person> Persons = new List<Person>();
+        public List<Person> person
         {
-            get { return person; }
-            set { person = value; }
+            get { return Persons; }
+            set { Persons = value; }
         }
-        List<Project> project = new List<Project>();
-        public List<Project> Project
+        List<Project> Projects = new List<Project>();
+        public List<Project> project
         {
-            get { return project; }
-            set { project = value; }
+            get { return Projects; }
+            set { Projects = value; }
         }
 
         public void Read_Proj()
@@ -37,32 +37,27 @@ namespace File
 
                
                 StreamReader sr = new StreamReader("D:\\Project.txt");
-                Project New_Proj = new Project();
+               
                 while (!sr.EndOfStream)
                 {                   
                     s = sr.ReadLine();
-                   
+                    Project New_Proj = new Project();
                     string[] str= s.Split('@');
-                    
-                   
-
-                    New_Proj.Id = Convert.ToDouble(str[0]);                    
+                    Console.Write(str[0]);
+                    New_Proj.Id = Convert.ToInt32(str[0]);                    
                     New_Proj.Dead_Line = str[1];
-                    New_Proj.Planned_budget = str[2];
-                    New_Proj.Real_budget = str[3];
+                    New_Proj.Planned_budget = Convert.ToDouble(str[2]);
+                    New_Proj.Real_budget = Convert.ToDouble(str[3]);
                     New_Proj.Client_List = str[4];
                     New_Proj.Task_List = str[5];
                     New_Proj.Performer = str[6];
                     New_Proj.Complete_Status =(Status)Enum.Parse(typeof(Status),str[7]);
-                   
-                       
+                    New_Proj.Date_Time = str[8];
+                    project.Add(New_Proj);
                 }
 
-                project.Add(New_Proj);
-                foreach (var item in project)
-                {
-                    Console.Write(item);
-                }
+               
+           
             }
             catch (Exception)
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace File
@@ -14,35 +15,36 @@ namespace File
     class Project
     {
         private string dead_Line;
-        private string planned_budget;
-        private string real_budget;
-        private string client_List;
-        private string task_List;
+        private double planned_budget;
+        private double real_budget;
+        private List<Person> client_List;
+        private List <My_Task> task_List;
         private string performer;
         private Status complete_Status;
-        private double id;
+        private int id;
+        private string date_time;
 
         public string Dead_Line
         {
             get { return dead_Line; }
             set { dead_Line = value; }
         }
-        public string Planned_budget
+        public double Planned_budget
         {
             get { return planned_budget; }
             set { planned_budget = value; }
         }
-        public string Real_budget
+        public double Real_budget
         {
             get { return real_budget; }
             set { real_budget = value; }
         }
-        public string Client_List
+        public List<Person> Client_List
         {
             get { return client_List; }
             set { client_List = value; }
         }
-        public string Task_List
+        public List<My_Task> Task_List
         {
             get { return task_List; }
             set { task_List = value; }
@@ -55,15 +57,18 @@ namespace File
         public Status Complete_Status
         {
             get { return complete_Status; }
-            set { complete_Status = 
-                    value; }
+            set { complete_Status =value; }
         }
-        public double Id
+        public int Id
         {
             get { return id; }
             set { id = value; }
         }
-
+        public string Date_Time
+        {
+            get { return date_time; }
+            set { date_time = value; }
+        }
         public Project()
         {
             /*string s = null;
