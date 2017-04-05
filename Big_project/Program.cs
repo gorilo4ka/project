@@ -15,7 +15,10 @@ namespace File
             int i;
             bool result;
             string s;
-            
+            Reader lok = new Reader();
+            lok.Read_Proj();
+            Console.ReadLine();
+            /*
             do
             {
                 Console.WriteLine("Меню:");
@@ -100,7 +103,7 @@ namespace File
             arrays[3] = "реальный бюджет -- ";
             arrays[4] = "список Персон -- ";
             arrays[5] = "список заданий -- ";
-            arrays[6] = "ответственнsq исполнителm -- ";
+            arrays[6] = "ответственный исполнитель -- ";
             arrays[7] = "статус завершения -- ";
             for (int k = 0; k < array.Length; k++)
             {
@@ -178,7 +181,7 @@ namespace File
             {
                 Console.WriteLine("Исполнитель " + idp + ":Не существует");
             }
-            sr.Close();
+            sr.Close();*/
         }
     }
 }

@@ -2,17 +2,18 @@
 using System.IO;
 namespace File
 {
-    public class Tasks
+    public class My_Task
     {
-        private string task;
+
+        private string name;
         private double id_Task;
         private double id_Person;
         private double id_Project;
 
-        public string Task
+        public string Name
         {
-            get { return task; }
-            set { task = value; }
+            get { return name; }
+            set { name = value; }
         }
         public double Id_Task
         {

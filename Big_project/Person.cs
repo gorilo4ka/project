@@ -46,13 +46,13 @@ namespace File
             string s = null;
             try
             {
-                StreamReader sr = new StreamReader("F:\\Client.txt");
+                StreamReader sr = new StreamReader("D:\\Client.txt");
                 s = sr.ReadToEnd();
                 sr.Close();
             }
             catch (Exception)
             {
-                StreamWriter text = new StreamWriter("F:\\Client.txt");
+                StreamWriter text = new StreamWriter("D:\\Client.txt");
                 text.Close();
             }
 
@@ -88,7 +88,7 @@ namespace File
             { }
 
 
-            using (StreamWriter writer = new StreamWriter("F:\\Client.txt", true))
+            using (StreamWriter writer = new StreamWriter("D:\\Client.txt", true))
             {
                 writer.Write("id=" + (id) + " ---- ");
                 writer.Write(Name + "^");

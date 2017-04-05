@@ -57,7 +57,13 @@ namespace list
             List<string> list_ = new List<string> { "one", "two", "three", "four", "five" };
             int count_4 = (list_.Count(i => i.Length == 4));          
            
-            Console.Write(count_4);
+            Console.WriteLine(list_.FirstOrDefault(i=>i.Length==3)+" первое");
+            Console.WriteLine(list_.LastOrDefault(i => i.Length == 3) + " последнее");
+            List<string> list_t = list_.Where(i => i.StartsWith("t")).ToList();
+            foreach (var item in list_t)
+            {
+                Console.WriteLine(item);
+            }
             foreach (int items in list_even)
             {
                 if (items > 90)

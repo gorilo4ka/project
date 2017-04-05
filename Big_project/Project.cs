@@ -3,7 +3,9 @@ using System.IO;
 
 namespace File
 {
-    enum  Status 
+    
+   
+    enum  Status
     {
         Start,
         Proces,
@@ -64,7 +66,7 @@ namespace File
 
         public Project()
         {
-            string s = null;
+            /*string s = null;
             try
             {
                 StreamReader sr = new StreamReader("D:\\Project.txt");
@@ -194,7 +196,7 @@ namespace File
             Console.WriteLine("Ввведите статус завершения");
            
             texts.WriteLine(Complete_Status +"@");
-            texts.Close();
+            texts.Close();*/
 
         }
     }
