@@ -1,31 +1,32 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 namespace File
 {
     public class My_Task
     {
 
         private string name;
-        private double id_Task;
-        private double id_Person;
-        private double id_Project;
+        private int id_Task;
+        private List<Person> list_Person;
+        private int id_Project;
 
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
-        public double Id_Task
+        public int Id_Task
         {
             get { return id_Task; }
             set { id_Task = value; }
         }
-        public double Id_person
+        public List<Person> List_Person
         {
-            get { return id_Person; }
-            set { id_Person = value; }
+            get { return list_Person; }
+            set { list_Person = value; }
         }
-        public double Id_Project
+        public int Id_Project
         {
             get { return id_Project; }
             set { id_Project = value; }

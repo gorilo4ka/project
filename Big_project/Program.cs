@@ -12,8 +12,8 @@ namespace File
 
         static void Main(string[] args)
         {
-            int i;
-            bool result;
+           // int i;
+            //bool result;
             string s;
             Reader lok = new Reader();
             lok.Read_Proj();

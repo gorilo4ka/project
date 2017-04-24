@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 namespace File
 {
     public class Person
@@ -8,8 +12,7 @@ namespace File
         private string surname;
         private string patronymic;
         private string adress;
-        private string list;
-        private double id;
+        private int id;
 
         public string Name
         {
@@ -31,12 +34,8 @@ namespace File
             get { return adress; }
             set { adress = value; }
         }
-        public string List
-        {
-            get { return list; }
-            set { list = value; }
-        }
-        public double Id
+
+        public int Id
         {
             get { return id; }
             set { id = value; }
@@ -67,8 +66,7 @@ namespace File
             Patronymic = Console.ReadLine();
             Console.WriteLine("Ввведите адресс");
             Adress = Console.ReadLine();
-            Console.WriteLine("Ввведите список проектов");
-            List = Console.ReadLine();
+
 
             id = 0;
             string oop = "";
@@ -81,7 +79,7 @@ namespace File
                     oop = oop + char.ToString(s[s.LastIndexOf(ravno) + count]);
                     count++;
                 } while (char.ToString(s[s.LastIndexOf(ravno) + count]) != "-");
-                id = Convert.ToUInt32(oop);
+               // id = Convert.ToUInt32(oop);
                 id++;
             }
             catch (Exception)
@@ -99,10 +97,15 @@ namespace File
 
                 writer.Write(Adress + "^");
 
-                writer.WriteLine(List + "^");
+
                 writer.Close();
 
             }
+        }
+
+        internal bool StartsWith(string v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

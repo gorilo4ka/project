@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace File
 {
@@ -17,7 +21,7 @@ namespace File
         private string dead_Line;
         private double planned_budget;
         private double real_budget;
-        private List<Person> client_List;
+        private int client_List;
         private List <My_Task> task_List;
         private string performer;
         private Status complete_Status;
@@ -39,7 +43,7 @@ namespace File
             get { return real_budget; }
             set { real_budget = value; }
         }
-        public List<Person> Client_List
+        public int Client_List
         {
             get { return client_List; }
             set { client_List = value; }
