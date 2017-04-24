@@ -40,9 +40,12 @@ namespace File
             get { return id; }
             set { id = value; }
         }
+        public override string ToString()
+        { return "Person is "+Name+" "+Surname+" "+Patronymic; }
+
         public Person()
         {
-            string s = null;
+           /* string s = null;
             try
             {
                 StreamReader sr = new StreamReader("D:\\Client.txt");
@@ -99,13 +102,8 @@ namespace File
 
 
                 writer.Close();
-
-            }
-        }
-
-        internal bool StartsWith(string v)
-        {
-            throw new NotImplementedException();
+           
+            }*/
         }
     }
 }

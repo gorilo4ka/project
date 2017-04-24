@@ -8,46 +8,57 @@ using System.Threading;
 
 namespace File
 {
-     class Reader
+     static class Reader
     {
-        List<My_Task> tasks = null;
-        public List<My_Task> Task
+        static List<My_Task> tasks = null;
+        public static List<My_Task> Tasks
         {
             
-            get { return tasks; }
+            get {
+                if (tasks == null)
+                {
+                    tasks = new List<My_Task>();
+                    Read_Task();
+                }
+                return tasks; }
             set
             {
-                if (tasks==null)
-                {
-                    tasks= new List<My_Task>();                    
-                }
+
                 tasks = value;
             }
         }
-        List<Person> persons = null;
-        public List<Person> Person
+        static List<Person> persons = null;
+        public static List<Person> Persons
         {
-            get { return persons; }
-            set {
+
+            get {
                 if (persons == null)
                 {
                     persons = new List<Person>();
+                    Read_Person();
                 }
-                persons = value; }
+                return persons; }
+            set {               
+                persons = value;
+                }
+
         }
-        List<Project> projects = null; 
-        public List<Project> Project
+        static List<Project> projects = null; 
+        public static List<Project> Projects
         {
-            get { return projects; }
-            set {
+            get {
                 if (projects == null)
                 {
                     projects = new List<Project>();
+                    Read_Proj();
                 }
+                return projects; }
+            set {
+
                 projects = value; }
         }
 
-        public void Read_Proj()
+        public static void Read_Proj()
         {
             string s = null;
             try
@@ -68,7 +79,7 @@ namespace File
                     new_proj.Performer = str[6];
                     new_proj.Complete_Status = (Status)Enum.Parse(typeof(Status), str[7]);
                     new_proj.Date_Time = str[8];
-                    Project.Add(new_proj);
+                    Projects.Add(new_proj);
                 }
             }
             catch (Exception)
@@ -76,7 +87,7 @@ namespace File
 
             }
         }
-        public void Read_Person()
+        public static void Read_Person()
         {
             string s = null;
             try
@@ -93,14 +104,14 @@ namespace File
                     new_pers.Patronymic = str[3];
                     new_pers.Adress = str[4];
 
-                    Person.Add(new_pers);
+                    Persons.Add(new_pers);
                 }
             }
             catch (Exception)
             {
             }
         }
-        public void Read_Task()
+        public static void Read_Task()
         {
             string s = null;
             try
@@ -122,7 +133,7 @@ namespace File
                     
                     new_Task.Id_Project = Convert.ToInt32(str[2]);
                     new_Task.Id_Task = Convert.ToInt32(str[3]);
-                    Task.Add(new_Task);
+                    Tasks.Add(new_Task);
                 }
             }
             catch (Exception)

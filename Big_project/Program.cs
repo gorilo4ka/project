@@ -15,8 +15,13 @@ namespace File
            // int i;
             //bool result;
             string s;
-            Reader lok = new Reader();
-            lok.Read_Proj();
+           
+            
+            foreach (var item in Reader.Persons)
+            {
+                Console.WriteLine(item);
+            }
+            
             Console.ReadLine();
             /*
             do
