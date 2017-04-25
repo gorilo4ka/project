@@ -17,7 +17,7 @@ namespace File
             string s;
            
             
-            foreach (var item in Reader.Persons)
+            foreach (var item in Reader.Projects)
             {
                 Console.WriteLine(item);
             }

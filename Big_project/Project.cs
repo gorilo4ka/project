@@ -73,6 +73,8 @@ namespace File
             get { return date_time; }
             set { date_time = value; }
         }
+        public override string ToString()
+        { return "Project is " + Id; }
         public Project()
         {
             /*string s = null;

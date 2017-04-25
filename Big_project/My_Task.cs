@@ -31,5 +31,7 @@ namespace File
             get { return id_Project; }
             set { id_Project = value; }
         }
+        public override string ToString()
+        { return "Task is " + Name + " " + list_Person; }
     }
 }
