@@ -23,11 +23,11 @@ namespace ConsoleApp1
 
             s = Console.ReadLine();
             Int32.TryParse(s, out y);
-           /* bool isNumy = int.TryParse(s, out y);
+            bool isNumy = int.TryParse(s, out y);
             if (!isNumy)
             {
-                return;
-            }*/
+                y =50;
+            }
 
             int[] mas = Task.Task_massive(x,y);
 
@@ -57,7 +57,7 @@ namespace ConsoleApp1
      public static class Task
     {
         
-        public static int[] Task_massive(int length,  int max_value=50)
+        public static int[] Task_massive(int length,  int max_value)
         {
 
 
