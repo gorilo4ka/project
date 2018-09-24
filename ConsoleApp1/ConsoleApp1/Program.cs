@@ -19,7 +19,7 @@ namespace ConsoleApp1
                 return;                
             }
 
-            Console.WriteLine("Введите границу");
+            /*Console.WriteLine("Введите границу");
 
             s = Console.ReadLine();
             Int32.TryParse(s, out y);
@@ -27,7 +27,7 @@ namespace ConsoleApp1
             if (!isNumy)
             {
                 y =50;
-            }
+            }*/
 
             int[] mas = Task.Task_massive(x,y);
 
@@ -57,7 +57,7 @@ namespace ConsoleApp1
      public static class Task
     {
         
-        public static int[] Task_massive(int length,  int max_value)
+        public static int[] Task_massive(int length,  int max_value=50)
         {
 
 
